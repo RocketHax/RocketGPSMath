@@ -1,6 +1,0 @@
-c:\users\ahatim\documents\visual studio 2015\Projects\SeeSharpA_1\A_1\A_1\bin\Debug\A_1.exe.config
-c:\users\ahatim\documents\visual studio 2015\Projects\SeeSharpA_1\A_1\A_1\bin\Debug\A_1.exe
-c:\users\ahatim\documents\visual studio 2015\Projects\SeeSharpA_1\A_1\A_1\bin\Debug\A_1.pdb
-c:\users\ahatim\documents\visual studio 2015\Projects\SeeSharpA_1\A_1\A_1\obj\Debug\A_1.csprojResolveAssemblyReference.cache
-c:\users\ahatim\documents\visual studio 2015\Projects\SeeSharpA_1\A_1\A_1\obj\Debug\A_1.exe
-c:\users\ahatim\documents\visual studio 2015\Projects\SeeSharpA_1\A_1\A_1\obj\Debug\A_1.pdb
