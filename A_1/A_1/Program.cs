@@ -15,8 +15,6 @@ namespace A_1
             int n = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Value entered is : {0}", n);
 
-
-
             Console.ReadLine();
         }
     }
