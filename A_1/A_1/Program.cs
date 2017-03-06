@@ -25,7 +25,7 @@ namespace A_1
 
             for (int j = 0; j < n; ++j)
             {
-                for (int i = 0; i < n; ++i)
+                for (int i = 0; i < (mid_index + j + 1); ++i)
                 {
                     int draw_start_index = mid_index - j;
                     int draw_end_index = mid_index + j; 
