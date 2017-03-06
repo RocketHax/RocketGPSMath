@@ -43,7 +43,7 @@ namespace A_1
 
                     if (i >= draw_start_index && i <= draw_end_index)
                         Console.Write("*");
-                    else
+                    else if(i < mid_index)
                         Console.Write(" ");
                 }
                 Console.WriteLine();
