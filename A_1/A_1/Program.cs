@@ -27,6 +27,7 @@ namespace A_1
             PrintUsingAlgo2(n);
 
             //Test 1
+            //Test 2
 
             Console.ReadLine();
         }
