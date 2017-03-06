@@ -21,6 +21,18 @@ namespace A_1
                   Console.WriteLine("Not a valid number, need an odd number!");
             }
 
+            Console.WriteLine("\n Algo 1 : \n");
+            PrintUsingAlgo1(n);
+            Console.WriteLine("\n Algo 2 : \n");
+            PrintUsingAlgo2(n);
+
+            Console.ReadLine();
+        }
+
+        //////////////////////////////////////////////////////////////////////////
+
+        static void PrintUsingAlgo1(int n)
+        {
             int mid_index = (int)Math.Ceiling((double)n / 2) - 1;
 
             for (int j = 0; j < n; ++j)
@@ -28,7 +40,7 @@ namespace A_1
                 for (int i = 0; i < (mid_index + j + 1); ++i)
                 {
                     int draw_start_index = mid_index - j;
-                    int draw_end_index = mid_index + j; 
+                    int draw_end_index = mid_index + j;
 
                     if (j > mid_index)
                     {
@@ -38,13 +50,34 @@ namespace A_1
 
                     if (i >= draw_start_index && i <= draw_end_index)
                         Console.Write("*");
-                    else if(i < mid_index)
+                    else if (i < mid_index)
                         Console.Write(" ");
                 }
                 Console.WriteLine();
             }
-
-            Console.ReadLine();
         }
+
+        //////////////////////////////////////////////////////////////////////////
+
+        static void PrintUsingAlgo2(int n)
+        {
+            n = n / 2;
+
+            for(int i = -n; i <= n; ++i)
+            {
+                for(int j = -n; j <= n; ++j)
+                {
+                    if (Math.Abs(i) + Math.Abs(j) <= n)
+                        Console.Write("*");
+                    else
+                        Console.Write(" ");
+                }
+
+                Console.WriteLine();
+            }
+        }
+
+        //////////////////////////////////////////////////////////////////////////
+
     }
 }
