@@ -10,15 +10,15 @@ namespace A_1
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter a number : ");
-            
-            int n = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Value entered is : {0}", n);
+            int n = 0;
 
-            if(n % 2 == 0)
+            while (n % 2 == 0)
             {
-                Console.WriteLine("Not a valid number, need an odd number!");
-                return;
+                Console.Write("Enter a number : ");
+                n = Convert.ToInt32(Console.ReadLine());
+
+                if (n % 2 == 0)
+                  Console.WriteLine("Not a valid number, need an odd number!");
             }
 
             int mid_index = (int)Math.Ceiling((double)n / 2) - 1;
