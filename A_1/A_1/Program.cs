@@ -26,8 +26,6 @@ namespace A_1
             Console.WriteLine("\n Algo 2 : \n");
             PrintUsingAlgo2(n);
 
-            //Master Add
-
             Console.ReadLine();
         }
 
