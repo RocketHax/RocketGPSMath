@@ -23,8 +23,7 @@ namespace A_1
 
             int mid_index = (int)Math.Ceiling((double)n / 2) - 1;
 
-
-            for(int j = 0; j < n; ++j)
+            for (int j = 0; j < n; ++j)
             {
                 for (int i = 0; i < n; ++i)
                 {
@@ -43,14 +42,12 @@ namespace A_1
                     }
 
                     if (i >= draw_start_index && i <= draw_end_index)
-                        Console.Write("#");
+                        Console.Write("*");
                     else
                         Console.Write(" ");
                 }
                 Console.WriteLine();
             }
-
-
 
             Console.ReadLine();
         }
