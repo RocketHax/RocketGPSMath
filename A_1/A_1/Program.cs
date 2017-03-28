@@ -11,6 +11,7 @@ namespace A_1
         static void Main(string[] args)
         {
             int n = 0;
+            string tester = "lol";
 
             while (n % 2 == 0)
             {
