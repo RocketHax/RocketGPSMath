@@ -12,7 +12,6 @@ namespace A_1
         {
             int n = 0;
             string tester = "lol 2";
-            string t = "aaa";
 
             while (n % 2 == 0)
             {
