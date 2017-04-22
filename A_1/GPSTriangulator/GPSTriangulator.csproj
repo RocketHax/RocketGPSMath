@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GPSMath\GPSMathUtil.cs" />
+    <Compile Include="Model\GPSCoordinate.cs" />
+    <Compile Include="Model\GPSDegree.cs" />
+    <Compile Include="Model\IGPSCoordinateMath.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
