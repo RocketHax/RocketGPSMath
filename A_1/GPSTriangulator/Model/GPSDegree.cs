@@ -27,17 +27,34 @@ namespace GPSTriangulator.Model
             this.seconds = seconds;
         }
 
+        public GPSDegree(double degrees)
+        {
+            //Console.WriteLine("//////////////////////////");
+            //Console.WriteLine(degrees.ToString());
+            //Console.WriteLine("//////////////////////////");
+            FromDouble(degrees);
+        }
+
         public void FromDouble(double degrees)
         {
             var r = GPSMathUtil.DecimalToGPSDegree(degrees);
             degrees = r.degrees;
             minutes = r.minutes;
             seconds = r.seconds;
+
+            //Console.WriteLine("//////////////////////////");
+            //Console.WriteLine(r.degrees.ToString());
+            //Console.WriteLine(r.minutes.ToString());
+            //Console.WriteLine(r.seconds.ToString());
+            //Console.WriteLine(ToDouble().ToString());
+            //Console.WriteLine(GPSMathUtil.RadiansToDegree( ToDouble()).ToString());
+            //Console.WriteLine("//////////////////////////");
+
         }
 
         public double ToDouble()
         {
-            return GPSMathUtil.DegreeToDecimal(degrees, minutes, seconds);
+            return GPSMathUtil.DegreeToDecimal(this);
         }
 
         public static GPSDegree operator+(GPSDegree instance, GPSDegree other)
