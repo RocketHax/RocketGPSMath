@@ -22,5 +22,13 @@ namespace GPSTriangulator.Model
             this.latitude = latitude;
             this.longitude = longitute;
         }
+
+        public new string ToString()
+        {
+            string lat = "Latitute : " + latitude.degrees.ToString() + " " + latitude.minutes.ToString() + " " + latitude.seconds.ToString();
+            string lgt = "Longitude : " + longitude.degrees.ToString() + " " + longitude.minutes.ToString() + " " + longitude.seconds.ToString();
+
+            return lat + " " + lgt;
+        }
     }
 }

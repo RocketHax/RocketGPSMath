@@ -41,6 +41,7 @@ namespace GPSTriangulator.GPSMath
             return new GPSDegree(deg, min, sec);
         }
 
+        //Distance in KM
         public static double CalculateDistance(GPSCoordinate from, GPSCoordinate to)
         {
             //Calculate radians
@@ -78,21 +79,22 @@ namespace GPSTriangulator.GPSMath
             return totalDistance;
         }
 
-        public static GPSCoordinate CalculateMiddleCoordinate(GPSCoordinate posA, GPSCoordinate posB)
+        //[AH] WRONG!!!
+        public static GPSCoordinate CalculateMiddleCoordinate(GPSCoordinate from, GPSCoordinate to)
         {
             GPSCoordinate midPoint = new GPSCoordinate();
 
-            double dLon = DegreesToRadians(posB.longitude.ToDouble() - posA.longitude.ToDouble());
-            double Bx = Math.Cos(DegreesToRadians(posB.latitude.ToDouble())) * Math.Cos(dLon);
-            double By = Math.Cos(DegreesToRadians(posB.latitude.ToDouble())) * Math.Sin(dLon);
+            double dLon = DegreesToRadians(to.longitude.ToDouble() - from.longitude.ToDouble());
+            double Bx = Math.Cos(DegreesToRadians(to.latitude.ToDouble())) * Math.Cos(dLon);
+            double By = Math.Cos(DegreesToRadians(to.latitude.ToDouble())) * Math.Sin(dLon);
 
             midPoint.latitude = DecimalToGPSDegree(Math.Atan2(
-                         Math.Sin(DegreesToRadians(posA.latitude.ToDouble())) + Math.Sin(DegreesToRadians(posB.latitude.ToDouble())),
+                         Math.Sin(DegreesToRadians(from.latitude.ToDouble())) + Math.Sin(DegreesToRadians(to.latitude.ToDouble())),
                          Math.Sqrt(
-                             (Math.Cos(DegreesToRadians(posA.latitude.ToDouble())) + Bx) *
-                             (Math.Cos(DegreesToRadians(posA.latitude.ToDouble())) + Bx) + By * By)));
+                             (Math.Cos(DegreesToRadians(from.latitude.ToDouble())) + Bx) *
+                             (Math.Cos(DegreesToRadians(from.latitude.ToDouble())) + Bx) + By * By)));
 
-            midPoint.longitude = posA.longitude + DecimalToGPSDegree(Math.Atan2(By, Math.Cos(DegreesToRadians(posA.latitude.ToDouble())) + Bx));
+            midPoint.longitude = from.longitude + DecimalToGPSDegree(Math.Atan2(By, Math.Cos(DegreesToRadians(from.latitude.ToDouble())) + Bx));
 
             return midPoint;
         }
