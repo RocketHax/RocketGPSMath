@@ -10,7 +10,6 @@ namespace A_1
     {
         static void Main(string[] args)
         {
-            string t = "AAAAAAAAAAAA";
             int n = 0;
 
             while (n % 2 == 0)
