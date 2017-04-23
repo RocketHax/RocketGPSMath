@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A_1", "A_1\A_1.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPSTriangulator", "GPSTriangulator\GPSTriangulator.csproj", "{8A2EC315-E4B2-4A7F-9B30-B61D50881CB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GPSTriangulatorTests", "GPSTriangulatorTests\GPSTriangulatorTests.csproj", "{F1BFC250-E0B5-44B9-80BF-D7BBF3700391}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8A2EC315-E4B2-4A7F-9B30-B61D50881CB9} = {8A2EC315-E4B2-4A7F-9B30-B61D50881CB9}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +26,10 @@ Global
 		{8A2EC315-E4B2-4A7F-9B30-B61D50881CB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A2EC315-E4B2-4A7F-9B30-B61D50881CB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A2EC315-E4B2-4A7F-9B30-B61D50881CB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1BFC250-E0B5-44B9-80BF-D7BBF3700391}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1BFC250-E0B5-44B9-80BF-D7BBF3700391}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1BFC250-E0B5-44B9-80BF-D7BBF3700391}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1BFC250-E0B5-44B9-80BF-D7BBF3700391}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,43 +6,30 @@ using System.Text;
 
 namespace GPSTriangulator.GPSMath
 {
-    public static class GPSMathUtil
+    public class GPSMathProcessor
     {
+        static GPSMathProcessor calculator = new GPSMathProcessor();
+
         public const double EarthCircumference = 40000.0; // Earth's circumference at the equator in km
 
-        public static double DegreesToRadians(double degrees)
+        //For lazy bum
+        public static GPSMathProcessor Get()
+        {
+            return calculator;
+        }
+
+        public double DegreesToRadians(double degrees)
         {
             return degrees * Math.PI / 180.0;
         }
 
-        public static double RadiansToDegree(double radians)
+        public double RadiansToDegree(double radians)
         {
             return radians * (180.0 / Math.PI);
         }
 
-        public static double DegreeToDecimal(GPSDegree deg)
-        {
-            return DegreeToDecimal(deg.degrees, deg.minutes, deg.seconds);
-        }
-
-        public static double DegreeToDecimal(double degrees, double minutes, double seconds)
-        {
-            return (degrees + (minutes / 60) + (seconds / 3600)) * (degrees < 0 ? -1 : 1);
-        }
-
-        public static GPSDegree DecimalToGPSDegree(double degrees)
-        {
-            int sec = (int)Math.Round(degrees * 3600);
-            int deg = sec / 3600;
-            sec = Math.Abs(sec % 3600);
-            int min = sec / 60;
-            sec %= 60;
-
-            return new GPSDegree(deg, min, sec);
-        }
-
-        //Distance in KM
-        public static double CalculateDistance(GPSCoordinate from, GPSCoordinate to)
+        //Distance in KM, using Haversine formula
+        public double CalculateDistance(GPSCoordinate from, GPSCoordinate to)
         {
             //Calculate radians
             double latitude1Rad = DegreesToRadians(from.latitude.ToDouble());
@@ -64,7 +51,7 @@ namespace GPSTriangulator.GPSMath
         }
 
         //Calculate total distance
-        public static double CalculateDistance(params GPSCoordinate[] coordinates)
+        public double CalculateDistance(params GPSCoordinate[] coordinates)
         {
             double totalDistance = 0.0;
 
@@ -80,7 +67,7 @@ namespace GPSTriangulator.GPSMath
         }
 
         //[AH] WRONG!!!
-        public static GPSCoordinate CalculateMiddleCoordinate(GPSCoordinate from, GPSCoordinate to)
+        public GPSCoordinate CalculateMiddleCoordinate(GPSCoordinate from, GPSCoordinate to)
         {
             double dLon = DegreesToRadians(to.longitude.ToDouble() - from.latitude.ToDouble());
 
@@ -100,6 +87,40 @@ namespace GPSTriangulator.GPSMath
             //Console.WriteLine(RadiansToDegree(lon3).ToString());
 
             return new GPSCoordinate(DecimalToGPSDegree(RadiansToDegree(lat3)), DecimalToGPSDegree(RadiansToDegree(lon3)));
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        //DMS to DD///////////////////////////////////////////////////////////////////////////////
+        //DMS(127o 30' 00") = 127 + (30/60) + (0/3600) = DEC(127.5)///////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////
+
+        public double GPSDegreeToDecimal(double d, double m, double s)
+        {
+            return GPSDegreeToDecimal(new GPSDegree(d, m, s));
+        }
+
+        public double GPSDegreeToDecimal(GPSDegree source)
+        {
+            double d = source.degrees;
+            double m = source.minutes;
+            double s = source.seconds;
+
+            return (d + (m / 60) + (s / 3600)) * (d < 0 ? -1 : 1);
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        //DD to DMS///////////////////////////////////////////////////////////////////////////////
+        //DEC(127.5) = D(floor(127.5))o M(floor(fraction of deg*60))' S(fraction of min*60)"//////
+        //////////////////////////////////////////////////////////////////////////////////////////
+
+        public GPSDegree DecimalToGPSDegree(double source)
+        {
+            //decimal degrees
+            double decdeg = source;
+            double minsec = (decdeg - Math.Truncate(decdeg)) * 60;
+            double sec = (minsec - Math.Truncate(minsec)) * 60;
+
+            return new GPSDegree(Math.Truncate(decdeg), Math.Truncate(minsec), sec);
         }
 
     }

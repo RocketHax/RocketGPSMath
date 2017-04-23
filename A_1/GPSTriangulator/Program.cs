@@ -19,10 +19,10 @@ namespace GPSTriangulator
             gps1 = new GPSCoordinate(new GPSDegree(37.7977008), new GPSDegree(-122.1637914));
             gps2 = new GPSCoordinate(new GPSDegree(37.798392), new GPSDegree(-122.161464));
 
-            double distance = GPSMath.GPSMathUtil.CalculateDistance(gps1, gps2);
+            double distance = GPSMath.GPSMathProcessor.Get().CalculateDistance(gps1, gps2);
             Console.WriteLine("Distance : " + distance.ToString());
 
-            var mid = GPSMath.GPSMathUtil.CalculateMiddleCoordinate(gps1, gps2);
+            var mid = GPSMath.GPSMathProcessor.Get().CalculateMiddleCoordinate(gps1, gps2);
             Console.WriteLine("Mid : " + mid.ToString());
 
 
