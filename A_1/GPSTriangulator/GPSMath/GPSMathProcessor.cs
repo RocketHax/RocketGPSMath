@@ -129,7 +129,5 @@ namespace GPSTriangulator.GPSMath
             return new GPSDegree((int)Math.Truncate(decdeg), (int)Math.Truncate(minsec), sec);
         }
 
-
-
     }
 }
