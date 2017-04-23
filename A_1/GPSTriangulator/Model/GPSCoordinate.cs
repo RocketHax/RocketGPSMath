@@ -40,7 +40,6 @@ namespace GPSTriangulator.Model
         public static bool operator !=(GPSCoordinate instance, GPSCoordinate other)
         {
             return instance == other;
-
         }
     }
 }

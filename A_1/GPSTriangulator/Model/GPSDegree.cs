@@ -9,8 +9,8 @@ namespace GPSTriangulator.Model
 {
     public class GPSDegree : IGPSCoordinateMath
     {
-        public double degrees;
-        public double minutes;
+        public int degrees;
+        public int minutes;
         public double seconds;
 
         public GPSDegree()
@@ -20,7 +20,7 @@ namespace GPSTriangulator.Model
         seconds = 0.0f;
         }
 
-        public GPSDegree(double degrees, double minutes, double seconds)
+        public GPSDegree(int degrees, int minutes, double seconds)
         {
             this.degrees = degrees;
             this.minutes = minutes;

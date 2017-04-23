@@ -100,7 +100,7 @@ namespace GPSTriangulator.GPSMath
         //DMS(127o 30' 00") = 127 + (30/60) + (0/3600) = DEC(127.5)///////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////
 
-        public double GPSDegreeToDecimal(double d, double m, double s)
+        public double GPSDegreeToDecimal(int d, int m, double s)
         {
             return GPSDegreeToDecimal(new GPSDegree(d, m, s));
         }
@@ -126,7 +126,7 @@ namespace GPSTriangulator.GPSMath
             double minsec = (decdeg - Math.Truncate(decdeg)) * 60;
             double sec = (minsec - Math.Truncate(minsec)) * 60;
 
-            return new GPSDegree(Math.Truncate(decdeg), Math.Truncate(minsec), sec);
+            return new GPSDegree((int)Math.Truncate(decdeg), (int)Math.Truncate(minsec), sec);
         }
 
 
