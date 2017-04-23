@@ -25,10 +25,22 @@ namespace GPSTriangulator.Model
 
         public new string ToString()
         {
+            var s = latitude.degrees;
             string lat = "Latitute : " + latitude.degrees.ToString() + " " + latitude.minutes.ToString() + " " + latitude.seconds.ToString();
             string lgt = "Longitude : " + longitude.degrees.ToString() + " " + longitude.minutes.ToString() + " " + longitude.seconds.ToString();
-
             return lat + " " + lgt;
+        }
+
+        public static bool operator ==(GPSCoordinate instance, GPSCoordinate other)
+        {
+            return ((instance.latitude == other.latitude) && (instance.longitude == other.longitude));
+
+        }
+
+        public static bool operator !=(GPSCoordinate instance, GPSCoordinate other)
+        {
+            return instance == other;
+
         }
     }
 }

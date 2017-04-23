@@ -32,9 +32,9 @@ namespace GPSTriangulator.Model
             FromDouble(degrees);
         }
 
-        public void FromDouble(double degrees)
+        public void FromDouble(double ddegree)
         {
-            var r = GPSMathProcessor.Get().DecimalToGPSDegree(degrees);
+            var r = GPSMathProcessor.Get().DecimalToGPSDegree(ddegree);
             degrees = r.degrees;
             minutes = r.minutes;
             seconds = r.seconds;
