@@ -23,7 +23,7 @@ namespace KMLModule.Parser
             return parser;
         }
 
-        public bool Read(string filePath, out List<KMLSatelliteFireData> datas)
+        public bool ReadByFile(string filePath, out List<KMLSatelliteFireData> datas)
         {
             datas = new List<KMLSatelliteFireData>();
 
@@ -31,10 +31,22 @@ namespace KMLModule.Parser
             {
                 XmlDocument doc = new XmlDocument();
                 doc.Load(filePath);
-                string xmlcontents = doc.InnerXml;
+                return Read(doc.InnerXml, out datas);
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
+        public bool Read(string xmlContent, out List<KMLSatelliteFireData> datas)
+        {
+            datas = new List<KMLSatelliteFireData>();
+
+            try
+            {
                 KmlFile file;
-                using (var stream = new MemoryStream(ASCIIEncoding.UTF8.GetBytes(xmlcontents)))
+                using (var stream = new MemoryStream(ASCIIEncoding.UTF8.GetBytes(xmlContent)))
                     file = KmlFile.Load(stream);
 
                 foreach (var p in file.Root.Flatten().OfType<Placemark>())
