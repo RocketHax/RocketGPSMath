@@ -179,10 +179,16 @@ namespace RocketGPS.GPSMath
             if (δ12 == 0)
                 return null;
 
-            var θa = Math.Acos((Math.Sin(φ2) - Math.Sin(φ1) * Math.Cos(δ12)) / (Math.Sin(δ12) * Math.Cos(φ1)));
+            double θa;
+            if (!Double.IsNaN(Math.Acos((Math.Sin(φ2) - Math.Sin(φ1) * Math.Cos(δ12)) / (Math.Sin(δ12) * Math.Cos(φ1)))))
+                θa = Math.Acos((Math.Sin(φ2) - Math.Sin(φ1) * Math.Cos(δ12)) / (Math.Sin(δ12) * Math.Cos(φ1)));
+            else
+                θa = 0;
 
-            if (Double.IsNaN(θa))
-                θa = 0; // protect against rounding
+//             var θa = Math.Acos((Math.Sin(φ2) - Math.Sin(φ1) * Math.Cos(δ12)) / (Math.Sin(δ12) * Math.Cos(φ1)));
+// 
+//             if (Double.IsNaN(θa))
+//                 θa = 0; // protect against rounding
 
             var θb = Math.Acos((Math.Sin(φ1) - Math.Sin(φ2) * Math.Cos(δ12)) / (Math.Sin(δ12) * Math.Cos(φ2)));
             var θ12 = Math.Sin(λ2 - λ1) > 0 ? θa : 2 * Math.PI - θa;
