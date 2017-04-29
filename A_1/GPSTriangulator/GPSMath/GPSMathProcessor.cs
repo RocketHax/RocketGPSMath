@@ -129,5 +129,30 @@ namespace GPSTriangulator.GPSMath
             return new GPSDegree((int)Math.Truncate(decdeg), (int)Math.Truncate(minsec), sec);
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////
+        //Point Translation///////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////
+
+        //#1
+        //Dim Distance, Bearing As Double
+        //Dim Radius As Double = 6372.795477598
+        //
+        //
+        //Distance = Distance / Radius
+        //LatB = ASinD(SinD(LatA) * Cos(Distance) + CosD(LatA) * Sin(Distance) * CosD(Bearing))
+        //LonB = LonA + ATan2D(SinD(Bearing) * Sin(Distance) * CosD(LatA), Cos(Distance) - SinD(LatA) * SinD(LatB))
+
+        //#2
+        //Dim Distance, Bearing As Double
+        //Dim Radius As Double = 6372.795477598
+        //'
+        //'
+        //Distance = (Distance / Radius)
+        //LatB = ASinD(SinD(LatA) * Cos(Distance/Radius) + CosD(LatA) * Sin(Distance/Radius) * CosD(Bearing))
+        //LonB = LonA + ATan2D(SinD(Bearing) * Sin(Distance / Radius) * CosD(LatA), Cos(Distance / Radius) - SinD(LatA) * SinD(LatB))
+
+
+
+
     }
 }
