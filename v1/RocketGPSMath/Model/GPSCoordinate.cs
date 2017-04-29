@@ -29,6 +29,12 @@ namespace RocketGPS.Model
             this.longitude = new GPSDegree(longitute);
         }
 
+        //in KM
+        public double DistanceTo(GPSCoordinate other)
+        {
+            return GPSMath.GPSMathProcessor.Get().CalculateDistance(this, other);
+        }
+
         public new string ToString()
         {
             var s = latitude.degrees;

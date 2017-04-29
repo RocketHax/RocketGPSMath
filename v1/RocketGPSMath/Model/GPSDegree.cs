@@ -30,10 +30,10 @@ namespace RocketGPS.Model
 
         public GPSDegree(double degrees)
         {
-            FromDouble(degrees);
+            fromDouble(degrees);
         }
 
-        public void FromDouble(double ddegree)
+        public void fromDouble(double ddegree)
         {
             var r = GPSMathProcessor.Get().DecimalToGPSDegree(ddegree);
             degrees = r.degrees;

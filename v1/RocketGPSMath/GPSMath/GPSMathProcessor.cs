@@ -185,11 +185,6 @@ namespace RocketGPS.GPSMath
             else
                 θa = 0;
 
-//             var θa = Math.Acos((Math.Sin(φ2) - Math.Sin(φ1) * Math.Cos(δ12)) / (Math.Sin(δ12) * Math.Cos(φ1)));
-// 
-//             if (Double.IsNaN(θa))
-//                 θa = 0; // protect against rounding
-
             var θb = Math.Acos((Math.Sin(φ1) - Math.Sin(φ2) * Math.Cos(δ12)) / (Math.Sin(δ12) * Math.Cos(φ2)));
             var θ12 = Math.Sin(λ2 - λ1) > 0 ? θa : 2 * Math.PI - θa;
             var θ21 = Math.Sin(λ2 - λ1) > 0 ? 2 * Math.PI - θb : θb;
@@ -213,5 +208,13 @@ namespace RocketGPS.GPSMath
 
             return new GPSCoordinate(new GPSDegree(rLat), new GPSDegree(rLong));
         }
-    }
+
+        //////////////////////////////////////////////////////////////////////////////////////////
+        //GPS Coordinate within radius of GPS Coordinate//////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////
+
+        public bool GPSPointWithinRadius(GPSCoordinate p1, GPSCoordinate p2, double radiusKM)
+        {
+            return p1.DistanceTo(p2) < radiusKM;
+        }
 }
