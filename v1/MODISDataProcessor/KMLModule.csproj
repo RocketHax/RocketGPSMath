@@ -44,8 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Parser\KMLParser.cs" />
-    <Compile Include="Model\KMLData.cs" />
+    <Compile Include="Model\KMLSatelliteFireData.cs" />
+    <Compile Include="Parser\KMLSatelliteFireDataParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

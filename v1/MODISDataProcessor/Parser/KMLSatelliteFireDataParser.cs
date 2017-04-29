@@ -8,9 +8,9 @@ using SharpKml.Base;
 using SharpKml.Engine;
 using System.IO;
 using System.Xml;
-using KMLModule.Model;
 using RocketGPS.Model;
 using System.Text.RegularExpressions;
+using MODISDataProcessor.Model;
 
 namespace KMLModule.Parser
 {
@@ -23,9 +23,9 @@ namespace KMLModule.Parser
             return parser;
         }
 
-        public bool Read(string filePath, out List<KMLData> datas)
+        public bool Read(string filePath, out List<KMLSatelliteFireData> datas)
         {
-            datas = new List<KMLData>();
+            datas = new List<KMLSatelliteFireData>();
 
             try
             {
@@ -39,7 +39,7 @@ namespace KMLModule.Parser
 
                 foreach (var p in file.Root.Flatten().OfType<Placemark>())
                 {
-                    KMLData m = new KMLData();
+                    KMLSatelliteFireData m = new KMLSatelliteFireData();
                     m.name = p.Name;
                     m.Description = p.Description.Text;
 
@@ -53,7 +53,6 @@ namespace KMLModule.Parser
 
                         Match mDate = Regex.Match(p.Description.Text, regexDate, RegexOptions.IgnoreCase);
                         Match mTime = Regex.Match(p.Description.Text, regexTime, RegexOptions.IgnoreCase);
-
 
                         if (mDate.Success && mTime.Success)
                         {
