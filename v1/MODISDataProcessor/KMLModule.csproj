@@ -45,7 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Parser\KMLParser.cs" />
-    <Compile Include="Model\MODISData.cs" />
+    <Compile Include="Model\KMLData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

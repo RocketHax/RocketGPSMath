@@ -1,6 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using KMLModule.Parser;
+using System.Collections.Generic;
+using KMLModule.Model;
 
 namespace KMLModuleTests
 {
@@ -13,16 +15,23 @@ namespace KMLModuleTests
             var parser = KMLParser.Get();
 
             string path = "TestData\\MODISFire\\MODIS_C6_USA_contiguous_and_Hawaii_24h.kml";
-            bool success = parser.Read(path);
+
+            List<KMLData> modisDatas;
+            bool success = parser.Read(path, out modisDatas);
 
             Assert.IsTrue(success);
+            Assert.IsTrue(modisDatas.Count == 904);
 
             path = "TestData\\VIIRSFire\\VNP14IMGTDL_NRT_USA_contiguous_and_Hawaii_24h.kml";
-            success = parser.Read(path);
+
+            List<KMLData> viirsDatas;
+            success = parser.Read(path, out viirsDatas);
 
             Assert.IsTrue(success);
+            Assert.IsTrue(viirsDatas.Count == 3743);
 
-            success = parser.Read("");
+            List<KMLData> dummyDatas;
+            success = parser.Read("", out dummyDatas);
             Assert.IsFalse(success);
         }
     }
