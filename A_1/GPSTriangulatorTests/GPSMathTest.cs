@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using GPSTriangulator.GPSMath;
-using GPSTriangulator.Model;
+using RocketGPS.GPSMath;
+using RocketGPS.Model;
 
 namespace GPSTriangulatorTests
 {
