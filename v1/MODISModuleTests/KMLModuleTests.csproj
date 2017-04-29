@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MODISDataProcessor\MODISModule.csproj">
+    <ProjectReference Include="..\MODISDataProcessor\KMLModule.csproj">
       <Project>{666252bd-dd2b-44dc-b28f-d269e32436a3}</Project>
-      <Name>MODISModule</Name>
+      <Name>KMLModule</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

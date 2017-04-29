@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MODISDataProcessor.Model
+namespace KMLModule.Model
 {
-    public class MODISData
+    public class KMLData
     {
         public string name;
         public GPSCoordinate coordinate;

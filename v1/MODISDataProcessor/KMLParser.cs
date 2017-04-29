@@ -8,10 +8,10 @@ using SharpKml.Base;
 using SharpKml.Engine;
 using System.IO;
 using System.Xml;
-using MODISDataProcessor.Model;
+using KMLModule.Model;
 using RocketGPS.Model;
 
-namespace MODISModule
+namespace KMLModule
 {
     public class KMLParser
     {
@@ -24,7 +24,7 @@ namespace MODISModule
 
         public bool Read(string filePath)
         {
-            List<MODISData> mDatas = new List<MODISData>();
+            List<KMLData> mDatas = new List<KMLData>();
 
             try
             {
@@ -38,7 +38,7 @@ namespace MODISModule
 
                 foreach (var p in file.Root.Flatten().OfType<Placemark>())
                 {
-                    MODISData m = new MODISData();
+                    KMLData m = new KMLData();
                     m.name = p.Name;
                     m.Description = p.Description.Text;
 

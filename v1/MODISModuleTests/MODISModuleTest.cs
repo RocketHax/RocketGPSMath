@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace MODISModuleTests
+namespace KMLModuleTests
 {
     [TestClass]
     public class KMLParserTest
@@ -9,7 +9,7 @@ namespace MODISModuleTests
         [TestMethod]
         public void TestReadKml()
         {
-            var parser = MODISModule.KMLParser.Get();
+            var parser = KMLModule.KMLParser.Get();
 
             string path = "TestData\\MODISFire\\MODIS_C6_USA_contiguous_and_Hawaii_24h.kml";
             bool success = parser.Read(path);
