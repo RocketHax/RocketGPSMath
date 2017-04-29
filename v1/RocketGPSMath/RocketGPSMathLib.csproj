@@ -41,7 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GPSMath\GPSMathProcessor.cs" />
-    <Compile Include="Model\FireReportModel.cs" />
+    <Compile Include="GPSMath\RegionTriangulator.cs" />
+    <Compile Include="Model\ReportingModel.cs" />
     <Compile Include="Model\GPSCoordinate.cs" />
     <Compile Include="Model\GPSDegree.cs" />
     <Compile Include="Model\IGPSCoordinateMath.cs" />

@@ -156,7 +156,7 @@ namespace RocketGPS.GPSMath
         //Bearing Intersection////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////
 
-        public GPSCoordinate CalculateIntersection(FireReportModel p1, FireReportModel p2)
+        public GPSCoordinate CalculateIntersection(ReportingModel p1, ReportingModel p2)
         {
             //φ is latitude, λ is longitude, R is earth’s radius (mean radius = 6, 371km);
             //note that angles need to be in radians to pass to trig functions!

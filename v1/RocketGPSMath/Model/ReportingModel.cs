@@ -7,29 +7,35 @@ using System.Threading.Tasks;
 
 namespace RocketGPSMath.Model
 {
-    public class FireReportModel
+    public class ReportingModel
     {
         public GPSCoordinate location;
         public GPSDegree bearing;
 
-        public FireReportModel()
+        public ReportingModel()
         {
             location = new GPSCoordinate();
             bearing = new GPSDegree();
         }
 
-        public FireReportModel(GPSCoordinate location, GPSDegree bearing) 
+        public ReportingModel(GPSCoordinate location, GPSDegree bearing) 
         {
             this.location = location;
             this.bearing = bearing;
         }
 
-        public static bool operator ==(FireReportModel instance, FireReportModel other)
+        public ReportingModel(double latitude, double longitude, double bearing)
+        {
+            this.location = new GPSCoordinate(latitude, longitude);
+            this.bearing = new GPSDegree(bearing);
+        }
+
+        public static bool operator ==(ReportingModel instance, ReportingModel other)
         {
             return (instance.bearing == other.bearing && instance.location == other.location);
         }
 
-        public static bool operator !=(FireReportModel instance, FireReportModel other)
+        public static bool operator !=(ReportingModel instance, ReportingModel other)
         {
             return instance == other;
         }

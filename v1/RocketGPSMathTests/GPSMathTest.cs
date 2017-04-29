@@ -117,11 +117,11 @@ namespace GPSTriangulatorTests
         {
             GPSCoordinate location1 = new GPSCoordinate(51.8853, 0.2545);
             GPSDegree bearing1 = new GPSDegree(108.547);
-            FireReportModel report1 = new FireReportModel(location1, bearing1);
+            ReportingModel report1 = new ReportingModel(location1, bearing1);
 
             GPSCoordinate location2 = new GPSCoordinate(49.0034, 2.5735);
             GPSDegree bearing2 = new GPSDegree(32.435);
-            FireReportModel report2 = new FireReportModel(location2, bearing2);
+            ReportingModel report2 = new ReportingModel(location2, bearing2);
 
             GPSCoordinate actual = GPSMathProcessor.Get().CalculateIntersection(report1, report2);
             GPSCoordinate expected = new GPSCoordinate(new GPSDegree(50.9078), new GPSDegree(4.5084));
