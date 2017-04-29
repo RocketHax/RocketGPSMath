@@ -54,7 +54,7 @@ namespace RocketGPS.GPSMath
             var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
             //Set to one decimal places
-            return Math.Round((EarthRadius * c) / 1000, DistancePrecision); 
+            return Math.Round((EarthRadius * c) / 1000, DistancePrecision);
         }
 
         //Calculate total distance
@@ -217,4 +217,5 @@ namespace RocketGPS.GPSMath
         {
             return p1.DistanceTo(p2) < radiusKM;
         }
+    }
 }
