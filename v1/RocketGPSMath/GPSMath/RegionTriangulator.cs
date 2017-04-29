@@ -24,6 +24,7 @@ namespace RocketGPSMath.GPSMath
         }
 
         //Should return number of coordinates where N > 1, Count = N(N-1)/2
+        //Returns bunch of GPS points to represent the region triangulated.
         public List<GPSCoordinate> Triangulate()
         {
             if (reports == null || reports.Count < 2)

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MODISDataProcessor.Model
+namespace RocketGPS.Model
 {
     public class KMLSatelliteFireData
     {

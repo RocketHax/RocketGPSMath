@@ -2,7 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using KMLModule.Parser;
 using System.Collections.Generic;
-using MODISDataProcessor.Model;
+using RocketGPS.Model;
 
 namespace KMLModuleTests
 {

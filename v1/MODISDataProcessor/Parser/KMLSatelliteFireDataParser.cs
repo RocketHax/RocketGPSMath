@@ -10,7 +10,6 @@ using System.IO;
 using System.Xml;
 using RocketGPS.Model;
 using System.Text.RegularExpressions;
-using MODISDataProcessor.Model;
 
 namespace KMLModule.Parser
 {

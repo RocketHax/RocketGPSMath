@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="GPSMath\GPSMathProcessor.cs" />
     <Compile Include="GPSMath\RegionTriangulator.cs" />
+    <Compile Include="Model\KMLSatelliteFireData.cs" />
     <Compile Include="Model\ReportingModel.cs" />
     <Compile Include="Model\GPSCoordinate.cs" />
     <Compile Include="Model\GPSDegree.cs" />
