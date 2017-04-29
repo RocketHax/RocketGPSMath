@@ -11,7 +11,7 @@ using System.Xml;
 using KMLModule.Model;
 using RocketGPS.Model;
 
-namespace KMLModule
+namespace KMLModule.Parser
 {
     public class KMLParser
     {

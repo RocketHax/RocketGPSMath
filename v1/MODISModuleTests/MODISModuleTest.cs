@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using KMLModule.Parser;
 
 namespace KMLModuleTests
 {
@@ -9,7 +10,7 @@ namespace KMLModuleTests
         [TestMethod]
         public void TestReadKml()
         {
-            var parser = KMLModule.KMLParser.Get();
+            var parser = KMLParser.Get();
 
             string path = "TestData\\MODISFire\\MODIS_C6_USA_contiguous_and_Hawaii_24h.kml";
             bool success = parser.Read(path);
