@@ -33,6 +33,7 @@ namespace RocketGPS.Model
             fromDouble(degrees);
         }
 
+        //Sets values from decimal values
         public void fromDouble(double ddegree)
         {
             var r = GPSMathProcessor.Get().DecimalToGPSDegree(ddegree);
