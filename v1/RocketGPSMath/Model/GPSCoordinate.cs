@@ -23,6 +23,12 @@ namespace RocketGPS.Model
             this.longitude = longitute;
         }
 
+        public GPSCoordinate(double latitude, double longitute)
+        {
+            this.latitude = new GPSDegree(latitude);
+            this.longitude = new GPSDegree(longitute);
+        }
+
         public new string ToString()
         {
             var s = latitude.degrees;

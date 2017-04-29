@@ -1,4 +1,5 @@
 ﻿using RocketGPS.Model;
+using RocketGPSMath.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,10 +42,10 @@ namespace RocketGPS.GPSMath
 
         public double CalculateDistance(GPSCoordinate from, GPSCoordinate to)
         {
-            var lat1Rad = DegreesToRadians(from.latitude.ToDouble());
-            var lat2Rad = DegreesToRadians(to.latitude.ToDouble());
-            var dlat1lat2 = DegreesToRadians((to.latitude.ToDouble() - from.latitude.ToDouble()));
-            var dlong1long2 = DegreesToRadians((to.longitude.ToDouble() - from.longitude.ToDouble()));
+            var lat1Rad = from.latitude.toRadians();
+            var lat2Rad = to.latitude.toRadians();
+            var dlat1lat2 = to.latitude.toRadians() - from.latitude.toRadians();
+            var dlong1long2 = to.longitude.toRadians() - from.longitude.toRadians();
 
             var a = Math.Sin(dlat1lat2 / 2) * Math.Sin(dlat1lat2 / 2) +
                     Math.Cos(lat1Rad) * Math.Cos(lat2Rad) *
@@ -78,10 +79,10 @@ namespace RocketGPS.GPSMath
 
         public GPSCoordinate CalculateMiddle(GPSCoordinate from, GPSCoordinate to)
         {
-            double lat1Rad = DegreesToRadians(from.latitude.ToDouble());
-            double lat2Rad = DegreesToRadians(to.latitude.ToDouble());
-            double long1Rad = DegreesToRadians(from.longitude.ToDouble());
-            double long2Rad = DegreesToRadians(to.longitude.ToDouble());
+            double lat1Rad = from.latitude.toRadians();
+            double lat2Rad = to.latitude.toRadians();
+            double long1Rad = from.longitude.toRadians();
+            double long2Rad = to.longitude.toRadians();
 
             double Bx = Math.Cos(lat2Rad) * Math.Cos(long2Rad - long1Rad);
             double By = Math.Cos(lat2Rad) * Math.Sin(long2Rad - long1Rad);
@@ -155,6 +156,56 @@ namespace RocketGPS.GPSMath
         //Bearing Intersection////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////
 
+        public GPSCoordinate CalculateIntersection(FireReportModel p1, FireReportModel p2)
+        {
+            //φ is latitude, λ is longitude, R is earth’s radius (mean radius = 6, 371km);
+            //note that angles need to be in radians to pass to trig functions!
 
+            //φ1, λ1, θ13: 1st start point & (initial)bearing from 1st point towards intersection point
+            //φ2, λ2, θ23 : 2nd start point & (initial)bearing from 2nd point towards intersection point
+            //φ3, λ3 : intersection point
+
+            var φ1 = p1.location.latitude.toRadians();
+            var λ1 = p1.location.longitude.toRadians();
+            var φ2 = p2.location.latitude.toRadians();
+            var λ2 = p2.location.longitude.toRadians();
+            var θ13 = p1.bearing.toRadians();
+            var θ23 = p2.bearing.toRadians();
+            var Δφ = φ2 - φ1;
+            var Δλ = λ2 - λ1;
+
+            var δ12 = 2 * Math.Asin(Math.Sqrt(Math.Sin(Δφ / 2) * Math.Sin(Δφ / 2) + Math.Cos(φ1) * Math.Cos(φ2) * Math.Sin(Δλ / 2) * Math.Sin(Δλ / 2)));
+
+            if (δ12 == 0)
+                return null;
+
+            var θa = Math.Acos((Math.Sin(φ2) - Math.Sin(φ1) * Math.Cos(δ12)) / (Math.Sin(δ12) * Math.Cos(φ1)));
+
+            if (Double.IsNaN(θa))
+                θa = 0; // protect against rounding
+
+            var θb = Math.Acos((Math.Sin(φ1) - Math.Sin(φ2) * Math.Cos(δ12)) / (Math.Sin(δ12) * Math.Cos(φ2)));
+            var θ12 = Math.Sin(λ2 - λ1) > 0 ? θa : 2 * Math.PI - θa;
+            var θ21 = Math.Sin(λ2 - λ1) > 0 ? 2 * Math.PI - θb : θb;
+            var α1 = (θ13 - θ12 + Math.PI) % (2 * Math.PI) - Math.PI; // angle 2-1-3
+            var α2 = (θ21 - θ23 + Math.PI) % (2 * Math.PI) - Math.PI; // angle 1-2-3
+
+            if (Math.Sin(α1) == 0 && Math.Sin(α2) == 0)
+                return null; // infinite intersections
+
+            if (Math.Sin(α1) * Math.Sin(α2) < 0)
+                return null;
+
+            var α3 = Math.Acos(-Math.Cos(α1) * Math.Cos(α2) + Math.Sin(α1) * Math.Sin(α2) * Math.Cos(δ12));
+            var δ13 = Math.Atan2(Math.Sin(δ12) * Math.Sin(α1) * Math.Sin(α2), Math.Cos(α2) + Math.Cos(α1) * Math.Cos(α3));
+            var φ3 = Math.Asin(Math.Sin(φ1) * Math.Cos(δ13) + Math.Cos(φ1) * Math.Sin(δ13) * Math.Cos(θ13));
+            var Δλ13 = Math.Atan2(Math.Sin(θ13) * Math.Sin(δ13) * Math.Cos(φ1), Math.Cos(δ13) - Math.Sin(φ1) * Math.Sin(φ3));
+            var λ3 = λ1 + Δλ13;
+
+            var rLat = GPSMathProcessor.Get().RadiansToDegree(φ3);
+            var rLong = (GPSMathProcessor.Get().RadiansToDegree(λ3) + 540) % 360 - 180;
+
+            return new GPSCoordinate(new GPSDegree(rLat), new GPSDegree(rLong));
+        }
     }
 }

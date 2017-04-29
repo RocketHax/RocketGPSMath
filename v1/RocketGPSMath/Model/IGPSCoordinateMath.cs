@@ -8,7 +8,8 @@ namespace RocketGPS.Model
 {
     interface IGPSCoordinateMath
     {
-        double ToDouble();
+        double toDouble();
         void FromDouble(double degrees);
+        double toRadians();
     }
 }

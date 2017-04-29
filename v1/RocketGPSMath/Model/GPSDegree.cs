@@ -9,6 +9,7 @@ namespace RocketGPS.Model
 {
     public class GPSDegree : IGPSCoordinateMath
     {
+        public static double equalityEpsilon = 0.1;
         public int degrees;
         public int minutes;
         public double seconds;
@@ -40,9 +41,15 @@ namespace RocketGPS.Model
             seconds = r.seconds;
         }
 
-        public double ToDouble()
+        //In degrees
+        public double toDouble()
         {
             return GPSMathProcessor.Get().GPSDegreeToDecimal(this);
+        }
+
+        public double toRadians()
+        {
+            return  GPSMathProcessor.Get().DegreesToRadians(toDouble());
         }
 
         public static GPSDegree operator+(GPSDegree instance, GPSDegree other)
@@ -52,7 +59,7 @@ namespace RocketGPS.Model
 
         public static bool operator ==(GPSDegree instance, GPSDegree other)
         {
-            return (instance.degrees == other.degrees) && (instance.minutes == other.minutes) && ( Math.Abs(instance.seconds - other.seconds) <= 0.001 );
+            return (instance.degrees == other.degrees) && (instance.minutes == other.minutes) && ( Math.Abs(instance.seconds - other.seconds) <= equalityEpsilon);
         }
 
         public static bool operator !=(GPSDegree instance, GPSDegree other)
@@ -70,5 +77,6 @@ namespace RocketGPS.Model
         {
             return base.GetHashCode();
         }
+
     }
 }
