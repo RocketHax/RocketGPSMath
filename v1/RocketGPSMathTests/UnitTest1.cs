@@ -26,7 +26,7 @@ namespace GPSTriangulatorTests
             var res = triangulator.Triangulate();
 
             Assert.IsNotNull(res);
-            Assert.Equals(res.Count, 6);
+            Assert.IsTrue(res.Count == 6);
         }
     }
 }
