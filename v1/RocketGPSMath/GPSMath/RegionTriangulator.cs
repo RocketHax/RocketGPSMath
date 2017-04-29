@@ -11,14 +11,14 @@ namespace RocketGPSMath.GPSMath
 {
     public class RegionTriangulator
     {
-        public List<ReportingModel> reports;
+        public List<GPSCoordinateBearing> reports;
 
         public RegionTriangulator()
         {
 
         }
 
-        public RegionTriangulator(List<ReportingModel> reports)
+        public RegionTriangulator(List<GPSCoordinateBearing> reports)
         {
             this.reports = reports;
         }

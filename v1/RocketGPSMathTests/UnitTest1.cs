@@ -12,16 +12,16 @@ namespace GPSTriangulatorTests
         [TestMethod]
         public void TestTriangulateRegion()
         {
-            List<ReportingModel> reports = new List<ReportingModel>();
+            List<GPSCoordinateBearing> reports = new List<GPSCoordinateBearing>();
 
             RegionTriangulator triangulator = new RegionTriangulator(reports);
 
             Assert.IsNull(triangulator.Triangulate());
 
-            reports.Add(new ReportingModel(52.00000, 5.00000, 90));
-            reports.Add(new ReportingModel(51.00000, 7.00000, 0));
-            reports.Add(new ReportingModel(51.44374, 5.98755, 90));
-            reports.Add(new ReportingModel(51.08972, 6.4270, 0));
+            reports.Add(new GPSCoordinateBearing(52.00000, 5.00000, 90));
+            reports.Add(new GPSCoordinateBearing(51.00000, 7.00000, 0));
+            reports.Add(new GPSCoordinateBearing(51.44374, 5.98755, 90));
+            reports.Add(new GPSCoordinateBearing(51.08972, 6.4270, 0));
 
             var res = triangulator.Triangulate();
 

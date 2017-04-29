@@ -156,7 +156,7 @@ namespace RocketGPS.GPSMath
         //Bearing Intersection////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////////////////////////////
 
-        public GPSCoordinate CalculateIntersection(ReportingModel p1, ReportingModel p2)
+        public GPSCoordinate CalculateIntersection(GPSCoordinateBearing p1, GPSCoordinateBearing p2)
         {
             //φ is latitude, λ is longitude, R is earth’s radius (mean radius = 6, 371km);
             //note that angles need to be in radians to pass to trig functions!
@@ -165,10 +165,10 @@ namespace RocketGPS.GPSMath
             //φ2, λ2, θ23 : 2nd start point & (initial)bearing from 2nd point towards intersection point
             //φ3, λ3 : intersection point
 
-            var φ1 = p1.location.latitude.toRadians();
-            var λ1 = p1.location.longitude.toRadians();
-            var φ2 = p2.location.latitude.toRadians();
-            var λ2 = p2.location.longitude.toRadians();
+            var φ1 = p1.latitude.toRadians();
+            var λ1 = p1.longitude.toRadians();
+            var φ2 = p2.latitude.toRadians();
+            var λ2 = p2.longitude.toRadians();
             var θ13 = p1.bearing.toRadians();
             var θ23 = p2.bearing.toRadians();
             var Δφ = φ2 - φ1;
