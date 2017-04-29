@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using KMLModule.Parser;
 using System.Collections.Generic;
 using RocketGPS.Model;
+using KMLModule.Parser;
 
 namespace KMLModuleTests
 {

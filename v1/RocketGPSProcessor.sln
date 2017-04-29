@@ -7,15 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RocketGPSMathLib", "RocketG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RocketGPSMathTests", "RocketGPSMathTests\RocketGPSMathTests.csproj", "{F1BFC250-E0B5-44B9-80BF-D7BBF3700391}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMLModule", "MODISDataProcessor\KMLModule.csproj", "{666252BD-DD2B-44DC-B28F-D269E32436A3}"
-	ProjectSection(ProjectDependencies) = postProject
-		{A70B435E-31D6-4530-951F-7825C5723F7F} = {A70B435E-31D6-4530-951F-7825C5723F7F}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMLModuleTests", "KMLModuleTests\KMLModuleTests.csproj", "{0D51B6B9-92C9-4ECB-B156-50613585F16D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMLModuleTests", "MODISModuleTests\KMLModuleTests.csproj", "{0D51B6B9-92C9-4ECB-B156-50613585F16D}"
-	ProjectSection(ProjectDependencies) = postProject
-		{666252BD-DD2B-44DC-B28F-D269E32436A3} = {666252BD-DD2B-44DC-B28F-D269E32436A3}
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KMLModule", "KMLModule\KMLModule.csproj", "{666252BD-DD2B-44DC-B28F-D269E32436A3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +25,14 @@ Global
 		{F1BFC250-E0B5-44B9-80BF-D7BBF3700391}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1BFC250-E0B5-44B9-80BF-D7BBF3700391}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F1BFC250-E0B5-44B9-80BF-D7BBF3700391}.Release|Any CPU.Build.0 = Release|Any CPU
-		{666252BD-DD2B-44DC-B28F-D269E32436A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{666252BD-DD2B-44DC-B28F-D269E32436A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{666252BD-DD2B-44DC-B28F-D269E32436A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{666252BD-DD2B-44DC-B28F-D269E32436A3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0D51B6B9-92C9-4ECB-B156-50613585F16D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0D51B6B9-92C9-4ECB-B156-50613585F16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D51B6B9-92C9-4ECB-B156-50613585F16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D51B6B9-92C9-4ECB-B156-50613585F16D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{666252BD-DD2B-44DC-B28F-D269E32436A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{666252BD-DD2B-44DC-B28F-D269E32436A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{666252BD-DD2B-44DC-B28F-D269E32436A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{666252BD-DD2B-44DC-B28F-D269E32436A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
